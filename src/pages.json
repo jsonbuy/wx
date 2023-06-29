@@ -1,0 +1,62 @@
+{
+	"pages": [ // pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "挂号"
+			}
+		},
+		{
+			"path": "pages/video/video",
+			"style": {
+				"navigationBarTitleText": "听诊"
+			}
+		},
+		{
+			"path": "pages/reg/reg",
+			"style": {
+				"navigationBarTitleText": "位置"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/daibanmaiyao.png",
+			"selectedIconPath": "static/daibanmaiyao.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/mine/mine",
+			"iconPath": "static/zhenqianguahao.png",
+			"selectedIconPath": "static/zhenqianguahao.png",
+			"text": "挂号"
+		}, {
+			"pagePath": "pages/video/video",
+			"iconPath": "static/daibanwenzhen.png",
+			"selectedIconPath": "static/daibanwenzhen.png",
+			"text": "听诊"
+		}, {
+			"pagePath": "pages/reg/reg",
+			"iconPath": "static/dizhiguanli.png",
+			"selectedIconPath": "static/dizhiguanli.png",
+			"text": "位置"
+		}]
+	}
+}
