@@ -1,7 +1,6 @@
 <template>
-  <view class="content"></view>
   <view class="title">深圳市第一人民医院</view>
-  <view>
+  <view class="topImg">
     <image mode="aspectFill" src="https://diancan-1252107261.cos.accelerate.myqcloud.com/yiliao/nav-yiyu.png"></image>
   </view>
   <view class="nav_list">
@@ -22,7 +21,7 @@
     <view class="more">查看更多></view>
   </view>
   <view class="guahao">
-    <view class="guahaoList" v-for="item in popular" :style="{'background-color': item.background}">
+    <view class="guahaoList" @tap="toPage(item.title)" v-for="item in popular" :style="{'background-color': item.background}">
       <view>{{ item.title }}</view>
       <image mode="heightFix" :src="item.image"></image>
     </view>
@@ -44,6 +43,12 @@ onMounted(() => {
   menu_height.value = getMenu.height + 'px'
   pageData()
 })
+
+function toPage(title:string){
+  uni.switchTab({
+    url:'/pages/mine/mine?title=' + title
+  })
+}
 
 async function pageData(){
   const res:any = await RequestApi.HomePage()
@@ -80,6 +85,7 @@ async function pageData(){
 .nav_list .list view{
   width: 100%
 }
+.topImg image{width: 100%;}
 .nav_list view image{
   width: 25px;
   height: 25px;

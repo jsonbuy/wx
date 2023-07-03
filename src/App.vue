@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { onLaunch, onShow, onHide } from "@dcloudio/uni-app";
-// import * as echarts from 'echarts'  
-import { provide } from "vue";
-// provide('echarts',echarts)
 onLaunch(() => {
   let getMenu = uni.getStorageSync('Menubutton')
   if(!getMenu){

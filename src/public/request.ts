@@ -1,5 +1,7 @@
 import { Base64 } from "js-base64"
+
 const baseUrl = 'https://meituan.thexxdd.cn/api/'
+// const baseUrl = 'https://www.fastmock.site/mock/79012b4c23eb7c85dc9dc8c00ca1e6fa/yiyuan/'
 
 // 获取token
 function getToken(): string{
@@ -46,7 +48,9 @@ function request(
 // 接口
 const RequestApi = {
     HomePage: () => request('frontpage','GET'),
-    MinePage: () => request('department','GET')
+    MinePage: () => request('department','GET'),
+    GetReglist: (id:string) => request('reglist?id='+id,'GET'),
+    GetAlldlist: (id:string) => request('alldlist?dep_id='+id,'GET'),
 }
 
 export { RequestApi }
