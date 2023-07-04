@@ -1,7 +1,14 @@
 <template>
-    <view class="title">深圳市第一人民医院1</view>
     <view class="docBox">
-        <view class="docList"></view>
+        <view class="docList" v-for="item in docList">
+          <view class="images">
+            <image mode="widthFix" :src="item.avatar"></image>
+          </view>
+          <view class="text">
+            <view class="name">{{ item.name }} {{ item.post }}</view>
+            <view>{{ item.good_at }}</view>
+          </view>
+        </view>
     </view>
 </template>
 <script setup lang="ts">
@@ -10,13 +17,8 @@ import { RequestApi } from '@/public/request';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 const docId = ref<string>('')
-let menu_top = ref<string>('')
-let menu_height = ref<string>('')
-onMounted(() => {
-  let getMenu = uni.getStorageSync('Menubutton')
-  menu_top.value = getMenu.top + 'px'
-  menu_height.value = getMenu.height + 'px'
-})
+const docList = ref<any[]>([])
+
 onLoad((options:any) =>{
 	docId.value = options.id;
 })
@@ -25,15 +27,27 @@ onMounted(() => {
 })
 async function getDoctor(){
     let res:any = await RequestApi.GetAlldlist(docId.value)
-    console.log(res)
+    docList.value = res.data.data
 }
 </script>
 <style scoped>
-.title{
-  position: fixed;
-  color: #ffffff;
-  left: 15px;
-  top: v-bind('menu_top');
-  line-height: v-bind('menu_height');
+.docBox{padding: 10px;}
+.docList{display: flex;}
+.images{
+  width: 80px;
+  height: 100px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.images image{
+  width: 100%;
+}
+.docList .text{
+  flex: 1;
+  font-size: 12px;
+}
+.text .name{
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 </style>
